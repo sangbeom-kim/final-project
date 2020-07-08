@@ -1,0 +1,7 @@
+https://sangbeom-kim.github.io/final-project/
+
+* I don't know the reason but the github pages website doesn't seem to load sound on initial load.
+* I think this problem is not only for me, but is global.
+* When you start game by clicking start, the sound not loaded will play altogether, which will sound very bad.
+* I recommend you to start game, die, press ESC in gameover screen to go back to main menu to listen opening music.
+* Or you can just open it on local server, which is my best suggestion : )
