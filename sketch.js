@@ -526,7 +526,7 @@ function draw() {
     beat = 1
   }
   if (gamestate == 0) {
-    if (t == 2) {
+    if (t == 10) {
       mainmenu.play()
     }
     U.draw()
