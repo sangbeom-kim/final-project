@@ -14,3 +14,5 @@ The enemies will be mostly obstacles, which you can jump over or avoid. Would li
 In the main screen, there will only be a game start button. If you start you will see a story and your character. It will also show instructions
 The story will be simple, only for background of the game. You are a jelly that is rescuing other jellies from a factory. The map design will be factory based.
 After game finish, there will be a short credit scene. 
+
+<img src="https://user-images.githubusercontent.com/65142471/86928911-2cc7a200-c170-11ea-90e9-f9ffc5ccd886.jpg"  width="20%" height="20%">
