@@ -627,6 +627,12 @@ function draw() {
       fill(135, 206, 250, 200)
       ellipse(lives * 50 + 30, 30, 40)
     }
+    if (U.position.x < 30) {
+      U.position.x = 25
+    }
+    if (U.position.x > 670) {
+      U.position.x = 675
+    }
   }
   if (t > 350 && tt == 1 && mainmenu2.isPlaying() == false) {
     gamestate = 2
