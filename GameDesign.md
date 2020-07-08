@@ -1,6 +1,6 @@
 I would like to make an auto scroll game, which enemies or obstacles appear as the screen scrolls. 
 To make screen scroll, I will simply make a map that is very long sideways, and make a camera object to go along the path. Most of the things will be translate to look the screen is moving.
-The main character can move in the camera canvas, and enemies come from right side of the screen. To control collision, there will be a simple shape at the position of them. I will skin them with image or bigger shape. The collision shape will be a little smaller to make it not too hard to avoid.
+The main character can move in the camera canvas, and enemies come from right side of the screen. To control collision, there will be a simple shape at the position of them. The collision shape will be a little smaller to make it not too hard to avoid.
  
 The main character would be a ball which has big eyes. The eyes will always follow the next upcoming enemy's position. 
 ㄴThis became hard because if there are multiple enemies in one screen you can’t find the next enemy. So, I changed it to look right, and modifying it relating to upward and downward movement.
