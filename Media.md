@@ -1,4 +1,4 @@
-1.   
+1  
 mainmenu.mp3   
 mainmenu2.mp3   
 fight.mp3   
@@ -13,7 +13,7 @@ https://www.youtube.com/watch?v=QMokMQ8Bu7Y
 free to use in non-commercial use  
 same music but divided into 4 parts   
 
-2.   
+2   
 ow.mp3   
 https://freesound.org/people/shutyourmouth/sounds/253894/   
 
