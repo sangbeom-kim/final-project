@@ -21,6 +21,7 @@ let beat = 1
 let life = 3
 let story = 0
 let again = 10000000
+let luck = 0
 let damage1 = false
 let damage2 = false
 let boost1 = 0
@@ -113,9 +114,9 @@ function setup() {
   t064 = new tri(17630, 0, 1.5)
   t065 = new tri(17680, 0, 1.5)
   t066 = new tri(17780, 500, 2)
-  s1 = new sqr(1720, 0, 1)
-  s2 = new sqr(1725, 50, 1)
-  s3 = new sqr(1730, 100, 1)
+  s1 = new sqr(1730, 0, 1)
+  s2 = new sqr(1735, 50, 1)
+  s3 = new sqr(1740, 100, 1)
   t067 = new tri(17950, 0, 1.5)
   t068 = new tri(18100, 500, 1)
   t069 = new tri(18150, 500, 1.3)
@@ -131,9 +132,9 @@ function setup() {
   t079 = new tri(19100, 0, 1)
   t080 = new tri(194000, 500, 1)
   t081 = new tri(194000, 0, 1)
-  s4 = new sqr(1880, 450, 1)
-  s5 = new sqr(1885, 400, 1)
-  s6 = new sqr(1890, 350, 1)
+  s4 = new sqr(1890, 450, 1)
+  s5 = new sqr(1895, 400, 1)
+  s6 = new sqr(1900, 350, 1)
   t082 = new tri(19580, 0, 1.5)
   t083 = new tri(19700, 500, 1)
   t084 = new tri(19750, 500, 1)
@@ -146,9 +147,9 @@ function setup() {
   t091 = new tri(20300, 0, 1)
   t092 = new tri(207000, 500, 1)
   t093 = new tri(207000, 0, 1)
-  s7 = new sqr(2040, 450, 1)
-  s8 = new sqr(2045, 400, 1)
-  s9 = new sqr(2050, 350, 1)
+  s7 = new sqr(2050, 450, 1)
+  s8 = new sqr(2055, 400, 1)
+  s9 = new sqr(2060, 350, 1)
   t94 = new tri(21100, 500, 1)
   t95 = new tri(21220, 0, 1.5)
   t96 = new tri(21270, 0, 1.5)
@@ -168,9 +169,9 @@ function setup() {
   t110 = new tri(22350, 500, 1)
   t111 = new tri(22450, 0, 1.5)
   t112 = new tri(2255000, 500, 2)
-  s10 = new sqr(2195, 0, 1)
-  s11 = new sqr(2200, 50, 1)
-  s12 = new sqr(2205, 100, 1)
+  s10 = new sqr(2205, 0, 1)
+  s11 = new sqr(2210, 50, 1)
+  s12 = new sqr(2215, 100, 1)
   t113 = new tri(22680, 500, 1)
   t114 = new tri(22820, 0, 1.5)
   t115 = new tri(22870, 0, 1.5)
@@ -190,9 +191,9 @@ function setup() {
   t129 = new tri(23950, 500, 1)
   t130 = new tri(24050, 0, 1.5)
   t131 = new tri(2420000, 500, 2)
-  s13 = new sqr(2355, 0, 1)
-  s14 = new sqr(2360, 50, 1)
-  s15 = new sqr(2365, 100, 1)
+  s13 = new sqr(2365, 0, 1)
+  s14 = new sqr(2370, 50, 1)
+  s15 = new sqr(2375, 100, 1)
   t132 = new tri(24280, 500, 1)
   t133 = new tri(24420, 0, 1.5)
   t134 = new tri(24470, 0, 1.5)
@@ -205,9 +206,9 @@ function setup() {
   t141 = new tri(25100, 0, 1)
   t142 = new tri(25500, 500, 1)
   t143 = new tri(25500, 0, 1)
-  s16 = new sqr(2515, 0, 1)
-  s17 = new sqr(2520, 50, 1)
-  s18 = new sqr(2525, 100, 1)
+  s16 = new sqr(2520, 0, 1)
+  s17 = new sqr(2525, 50, 1)
+  s18 = new sqr(2530, 100, 1)
   t144 = new tri(25780, 500, 1)
   t145 = new tri(25920, 0, 1.5)
   t146 = new tri(25970, 0, 1.5)
@@ -220,9 +221,9 @@ function setup() {
   t153 = new tri(26600, 0, 1)
   t154 = new tri(27000, 500, 1)
   t155 = new tri(27000, 0, 1)
-  s19 = new sqr(2675, 0, 1)
-  s20 = new sqr(2680, 50, 1)
-  s21 = new sqr(2685, 100, 1)
+  s19 = new sqr(2680, 0, 1)
+  s20 = new sqr(2685, 50, 1)
+  s21 = new sqr(2690, 100, 1)
   s22 = new sqr2(-30, 0, 1.5, 410)
   s23 = new sqr2(640, 0, 1.5, 414)
   s24 = new sqr2(-30, 0, 1.5, 418)
@@ -652,6 +653,7 @@ function draw() {
     push()
     story += 3
     again += 3
+    luck += 2
     textStyle(BOLD)
     textAlign(CENTER)
     textSize(50)
@@ -660,7 +662,7 @@ function draw() {
     text('W, D to move, Space to jump / double jump', 1400 + story, 70, 500, 300)
     text('While in air, S to dash down', 2000 + story, 70, 500, 300)
     textSize(150)
-    text('Good Luck!!', 8000 + (story * 2) / 3, 180)
+    text('Good Luck!!', 8000 + luck, 180)
     text('Try Again!!', 1200 + again, 180)
     pop()
     //boss
@@ -1617,7 +1619,7 @@ function draw() {
       t217.x = 17200
       t218.x = -17100
       t219.x = -17050
-      t220.x = -17100
+      t220.x = -17000
       t221.x = 18300
       t222.x = 18350
       t223.x = 18400
@@ -2741,8 +2743,8 @@ function draw() {
         beat = 1
         life = 3
         end2 = false
-        story = 0
-        again = 10000000
+        story = 10000000
+        again = 0
         damage1 = false
         damage2 = false
         boost1 = 0
@@ -2767,6 +2769,7 @@ function draw() {
       textStyle(BOLD)
       textAlign(CENTER)
       textSize(100)
+      fill(255)
       text('Thank you!!', 350, tnks)
       pop()
       push()
