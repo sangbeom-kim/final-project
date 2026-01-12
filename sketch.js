@@ -44,8 +44,47 @@ let tnks = -300;
 let fin = -1200;
 let owo = 0;
 
+let cnv;
+let audioUnlocked = false;
+let unlocking = false;
+let startRequested = false;
+
+async function unlockAudio() {
+  if (audioUnlocked || unlocking) return;
+  unlocking = true;
+
+  const ctx = getAudioContext();
+  try {
+    await userStartAudio();
+    await ctx.resume();
+  } catch (e) {
+  }
+
+  audioUnlocked = (ctx.state === 'running');
+  unlocking = false;
+}
+
+let loadedCount = 0;
+const TOTAL_SOUNDS = 5;
+
+function soundLoaded() { loadedCount++; }
+
+function preload() {
+  mainmenu  = loadSound('mainmenu.mp3',  soundLoaded);
+  mainmenu2 = loadSound('mainmenu2.mp3', soundLoaded);
+  fight     = loadSound('fight.mp3',     soundLoaded);
+  fight2    = loadSound('fight2.mp3',    soundLoaded);
+  ow        = loadSound('ow.mp3',        soundLoaded);
+}
+
+function assetsReady() {
+  return loadedCount === TOTAL_SOUNDS;
+}
+
 function setup() {
-  createCanvas(700, 500);
+  cnv = createCanvas(700, 500);
+  cnv.elt.tabIndex = 0;
+
   U = new jelly(100, 470);
   t1 = new tri(5400, 500, 1);
   t2 = new tri(5600, 0, 1);
@@ -503,6 +542,27 @@ function setup() {
 
 function draw() {
   background(0);
+  
+  if (!assetsReady()) {
+    push();
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(24);
+    text(`Loading audio... (${loadedCount}/${TOTAL_SOUNDS})`, width/2, height/2);
+    pop();
+    return;
+  }
+
+  if (!audioUnlocked) {
+    push()
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(20);
+    text('Click to Play!', width/2, height/2);
+    pop();
+    return;
+  }
+  
   if (boost1 >= 100 && boost1 <= 300) {
     ow.play();
   }
@@ -1196,7 +1256,7 @@ function draw() {
       owo = 0;
       gamestate = 5;
       fight.stop();
-      if (g >= 2500) {
+      if (g >= 2000) {
         story = 10000000;
         again = 0;
       } else {
@@ -2840,6 +2900,11 @@ function draw() {
 }
 
 function keyPressed() {
+  unlockAudio();
+  if (!audioUnlocked) return;
+  if (gamestate == 0 && t > 330 && keyCode == 32) {
+      gamestate = 1;
+    }
   if (gameover == false && end2 == false) {
     if (gamestate == 1 || gamestate == 2 || gamestate == 3) {
       if (jumpcount < 2) {
@@ -2938,6 +3003,8 @@ function keyPressed() {
 }
 
 function mousePressed() {
+  unlockAudio();
+  if (!audioUnlocked) return;
   if (mouseX >= 160 && mouseX <= 540 && mouseY >= 100 && mouseY <= 250) {
     if (gamestate == 0 && t > 330) {
       gamestate = 1;
@@ -2960,10 +3027,3 @@ function star(x, y, radius1, radius2, npoints) {
   endShape(CLOSE);
 }
 
-function preload() {
-  mainmenu = loadSound("mainmenu.mp3");
-  mainmenu2 = loadSound("mainmenu2.mp3");
-  fight = loadSound("fight.mp3");
-  fight2 = loadSound("fight2.mp3");
-  ow = loadSound("ow.mp3");
-}
