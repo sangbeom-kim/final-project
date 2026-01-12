@@ -3026,4 +3026,3 @@ function star(x, y, radius1, radius2, npoints) {
   }
   endShape(CLOSE);
 }
-
